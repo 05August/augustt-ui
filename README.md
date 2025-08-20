@@ -1,4 +1,4 @@
-# @your-username/my-package
+# @augustt/ui
 
 Bộ component React (TypeScript) kèm TailwindCSS và Storybook, đóng gói bằng Rollup. Hỗ trợ script tạo nhanh template component.
 
@@ -8,9 +8,9 @@ Không phát hành lên npm. Thêm dependency trỏ đến repo Git của bạn:
 
 ```bash
 # ví dụ dùng GitHub
-npm i github:your-username/my-package#main
+npm i https://github.com/05August/augustt-ui.git#main
 # hoặc pin theo tag
-npm i github:your-username/my-package#v1.0.0
+npm i https://github.com/05August/augustt-ui.git#v1.0.0
 ```
 
 Gói sẽ tự build nhờ script `prepare`. Cần cài đặt peer deps trong dự án sử dụng:
@@ -21,8 +21,8 @@ Gói sẽ tự build nhờ script `prepare`. Cần cài đặt peer deps trong d
 
 ```tsx
 import React from 'react';
-import { Button, Input } from '@your-username/my-package';
-import '@your-username/my-package/dist/styles.css';
+import { Button, Input } from '@augustt-ui/my-package';
+import '@augustt-ui/my-package/dist/styles.css';
 
 export default function App() {
   return (
