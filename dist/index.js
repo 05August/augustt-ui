@@ -3009,7 +3009,7 @@ const Input = (_a) => {
 
 const Card = (_a) => {
     var { className = '', children } = _a, restProps = __rest(_a, ["className", "children"]);
-    return (React.createElement("div", Object.assign({ className: `card ${className}` }, restProps), children));
+    return (React.createElement("div", Object.assign({ className: cn('card', className) }, restProps), children));
 };
 
 exports.Button = Button;
