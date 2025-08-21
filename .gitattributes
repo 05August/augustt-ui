@@ -6,3 +6,5 @@ rollup.config.mjs export-ignore
 tailwind.config.js export-ignore
 postcss.config.cjs export-ignore
 tsconfig.json export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
