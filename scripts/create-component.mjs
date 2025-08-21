@@ -31,14 +31,25 @@ const typesContent = `import type { HTMLAttributes } from 'react';
 
 export interface ${componentName}Props extends HTMLAttributes<HTMLDivElement> {
 	className?: string;
+	children?: React.ReactNode;
 }
 `;
 const tsxContent = `import React from 'react';
 import { ${componentName}Props } from './${componentName}.types';
 import { cn } from '../../lib/cn';
 
-export const ${componentName}: React.FC<${componentName}Props> = ({ className = '', children, ...restProps }) => (
-	<div className={cn('${componentName.toLowerCase()}', className)} {...restProps}>
+export const ${componentName}: React.FC<${componentName}Props> = ({ 
+	className = '', 
+	children, 
+	...restProps 
+}) => (
+	<div 
+		className={cn(
+			'${componentName.toLowerCase()} bg-white border border-gray-200 rounded-lg p-4 shadow-sm',
+			className
+		)} 
+		{...restProps}
+	>
 		{children}
 	</div>
 );
@@ -47,25 +58,55 @@ export const ${componentName}: React.FC<${componentName}Props> = ({ className = 
 writeFileSync(path.join(componentDir, `${componentName}.types.ts`), typesContent, 'utf8');
 writeFileSync(path.join(componentDir, `${componentName}.tsx`), tsxContent, 'utf8');
 
-// Storybook story template (dev-only)
+// Storybook story template với controls đầy đủ
 const storyContent = `import type { Meta, StoryObj } from '@storybook/react';
 import { ${componentName} } from './${componentName}';
 
 const meta: Meta<typeof ${componentName}> = {
   title: 'Components/${componentName}',
   component: ${componentName},
-  parameters: { layout: 'centered' },
+  parameters: { 
+    layout: 'centered',
+    controls: { sort: 'requiredFirst' }
+  },
+  argTypes: {
+    className: {
+      control: 'text',
+      description: 'Tailwind CSS classes',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '' }
+      }
+    },
+    children: {
+      control: 'text',
+      description: '${componentName} content'
+    }
+  }
 };
 
 export default meta;
-
 type Story = StoryObj<typeof ${componentName}>;
 
 export const Primary: Story = {
   args: {
-    className: '',
-    children: '${componentName} content',
-  },
+    className: 'bg-white shadow-lg rounded-lg p-6 border border-gray-200',
+    children: '${componentName} content'
+  }
+};
+
+export const WithCustomStyle: Story = {
+  args: {
+    className: 'bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl p-8 shadow-2xl',
+    children: 'Gradient ${componentName.toLowerCase()} with custom styling'
+  }
+};
+
+export const Minimal: Story = {
+  args: {
+    className: 'bg-gray-50 border border-gray-300 rounded p-4',
+    children: 'Simple minimal ${componentName.toLowerCase()}'
+  }
 };
 `;
 
@@ -77,4 +118,6 @@ appendFileSync(indexPath, exportLine, 'utf8');
 
 console.log(`✔ Created component ${componentName}`);
 console.log(`↳ ${path.relative(projectRoot, componentDir)}`);
+console.log(`📖 Storybook controls enabled for Tailwind CSS editing`);
+console.log(`🎨 Default Tailwind classes: bg-white border border-gray-200 rounded-lg p-4 shadow-sm`);
 

@@ -1,0 +1,8 @@
+# Exclude dev-only files from Git tarballs (npm/yarn/pnpm Git installs)
+.storybook export-ignore
+scripts export-ignore
+src export-ignore
+rollup.config.mjs export-ignore
+tailwind.config.js export-ignore
+postcss.config.cjs export-ignore
+tsconfig.json export-ignore

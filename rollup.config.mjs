@@ -12,12 +12,12 @@ const config = {
 		{
 			file: 'dist/index.js',
 			format: 'cjs',
-			sourcemap: true,
+			sourcemap: false,
 		},
 		{
 			file: 'dist/index.esm.js',
 			format: 'esm',
-			sourcemap: true,
+			sourcemap: false,
 		},
 	],
 	plugins: [
