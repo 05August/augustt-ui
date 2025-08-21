@@ -34,7 +34,7 @@ type Story = StoryObj<typeof Button>;
 export const Primary: Story = {
   args: {
     label: 'Click me',
-    className: "bg-blue-600 hover:bg-blue-700 text-red-600"
+    className: "bg-blue-600 hover:bg-blue-700 text-green-600"
   }
 };
 

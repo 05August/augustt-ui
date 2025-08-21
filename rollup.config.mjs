@@ -23,7 +23,11 @@ const config = {
 	plugins: [
 		resolve(),
 		commonjs(),
-		typescript(),
+		typescript({
+			tsconfig: './tsconfig.json',
+			declaration: true,
+			declarationDir: './dist',
+		}),
 		postcss({
 			extract: 'styles.css',
 			minimize: true,
@@ -31,7 +35,11 @@ const config = {
 		}),
 	],
 	external: ['react', 'react-dom'],
+	treeshake: {
+		moduleSideEffects: false,
+		propertyReadSideEffects: false,
+		unknownGlobalSideEffects: false,
+	},
 };
-
 export default config;
 

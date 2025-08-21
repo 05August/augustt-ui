@@ -1,6 +1,6 @@
 {
   "name": "@augustt/ui",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && rollup -c rollup.config.mjs",
-    "prepare": "npm run build",
+    "prepare": "",
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
