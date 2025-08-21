@@ -21,7 +21,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && rollup -c rollup.config.mjs",
-    "prepare": "",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

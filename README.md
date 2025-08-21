@@ -8,9 +8,11 @@ Không phát hành lên npm. Thêm dependency trỏ đến repo Git của bạn:
 
 ```bash
 # ví dụ dùng GitHub
-npm i https://github.com/05August/augustt-ui.git#main
+npm i github:05August/augustt-ui.git#main
+yarn add github:05August/augustt-ui.git#main
 # hoặc pin theo tag
-npm i https://github.com/05August/augustt-ui.git#v1.0.0
+npm i github:05August/augustt-ui#v1.0.0
+yarn add github:05August/augustt-ui#v1.0.0
 ```
 
 Gói sẽ tự build nhờ script `prepare`. Cần cài đặt peer deps trong dự án sử dụng:
@@ -21,8 +23,8 @@ Gói sẽ tự build nhờ script `prepare`. Cần cài đặt peer deps trong d
 
 ```tsx
 import React from 'react';
-import { Button, Input } from '@augustt-ui/my-package';
-import '@augustt-ui/my-package/dist/styles.css';
+import { Button, Input } from '@augustt/ui';
+import '@augustt/ui/dist/styles.css';
 
 export default function App() {
   return (
@@ -71,20 +73,3 @@ Sinh ra:
 - `src/index.css`: CSS gốc của thư viện (Tailwind)
 - `.storybook/*`: Cấu hình Storybook
 - `rollup.config.js`: Cấu hình bundling
-
-## Tùy biến Tailwind trong app sử dụng
-Bạn có thể override style bằng cách thêm `className` vào component hoặc dùng Tailwind của ứng dụng. Nếu ứng dụng đã có Tailwind, vẫn import `@your-username/my-package/dist/styles.css` để có style mặc định, hoặc bỏ import này và tự style lại theo nhu cầu.
-
-## Dùng Git repo thay vì npm
-1. Tạo repo Git và push mã nguồn:
-   ```bash
-   git init
-   git add .
-   git commit -m "init: component library"
-   git branch -M main
-   git remote add origin git@github.com:your-username/my-package.git
-   git push -u origin main
-   ```
-2. Tại dự án sử dụng, cài qua Git như phần Cài đặt ở trên.
-3. Khi cập nhật lib, tạo tag và dùng tag trong dependency để cố định version.
-
