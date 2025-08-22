@@ -65,6 +65,7 @@ npm run gen:component Button
 Sinh ra:
 - `src/components/Button/Button.tsx`
 - `src/components/Button/Button.types.ts`
+- `src/components/Button/Button.stories.tsx`
 - Tự động thêm export vào `src/index.ts`
 
 ## Cấu trúc dự án
