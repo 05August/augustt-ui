@@ -13,20 +13,28 @@ const config = {
 			file: 'dist/index.js',
 			format: 'cjs',
 			sourcemap: false,
+			exports: 'named',
 		},
 		{
 			file: 'dist/index.esm.js',
 			format: 'esm',
 			sourcemap: false,
+			exports: 'named',
 		},
 	],
 	plugins: [
-		resolve(),
+		resolve({
+			extensions: ['.js', '.jsx', '.ts', '.tsx'],
+		}),
 		commonjs(),
 		typescript({
 			tsconfig: './tsconfig.json',
 			declaration: true,
 			declarationDir: './dist',
+			declarationMap: false,
+			// Tạo declarations nhưng không tạo thư mục con
+			composite: false,
+			outDir: undefined,
 		}),
 		postcss({
 			extract: 'styles.css',
@@ -40,6 +48,8 @@ const config = {
 		propertyReadSideEffects: false,
 		unknownGlobalSideEffects: false,
 	},
+	preserveModules: false,
 };
+
 export default config;
 

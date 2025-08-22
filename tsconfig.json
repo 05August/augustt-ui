@@ -4,6 +4,7 @@
     "module": "esnext",
     "jsx": "react",
     "declaration": true,
+    "declarationMap": false,
     "outDir": "dist",
     "esModuleInterop": true,
     "moduleResolution": "node",
@@ -11,7 +12,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    // Tối ưu hóa để chỉ tạo index.d.ts
+    "isolatedModules": false,
+    "skipLibCheck": true
   },
   "include": ["src/**/*"],
   "exclude": [
