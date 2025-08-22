@@ -5,7 +5,7 @@
     "jsx": "react",
     "declaration": true,
     "declarationMap": false,
-    "outDir": "dist",
+    "outDir": "./dist",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "strict": true,

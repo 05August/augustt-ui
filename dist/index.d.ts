@@ -1,5 +1,26 @@
+import type { ButtonHTMLAttributes, HTMLAttributes, InputHTMLAttributes } from 'react';
+import type { FC } from 'react';
 
-export { cn } from "./index";
-export { Button, ButtonProps } from "./index";
-export { Input, InputProps } from "./index";
-export { Card, CardProps } from "./index";
+export declare function cn(...inputs: any[]): string;
+
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    label: string;
+    className?: string;
+}
+
+export declare const Button: FC<ButtonProps>;
+
+export interface CardProps extends HTMLAttributes<HTMLDivElement> {
+    className?: string;
+}
+
+export declare const Card: FC<CardProps>;
+
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    placeholder?: string;
+    className?: string;
+}
+
+export declare const Input: FC<InputProps>;
+

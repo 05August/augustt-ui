@@ -20,8 +20,10 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && rollup -c rollup.config.mjs && npm run postbuild",
-    "postbuild": "node scripts/fix-types.mjs",
+    "build": "npm run clean && rollup -c rollup.config.mjs && npm run build:types && npm run merge:types && npm run cleanup",
+    "merge:types": "node scripts/fix-types.mjs",
+    "cleanup": "echo '✅ Build completed with optimized structure'",
+    "build:types": "tsc --emitDeclarationOnly --declaration --outDir dist --declarationDir dist",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "gen:component": "node scripts/create-component.mjs"
